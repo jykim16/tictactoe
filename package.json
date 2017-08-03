@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "react tic tac toe",
   "scripts": {
-    "start": "open index.html",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline -w"
   },
@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.2",
+    "express": "^4.15.3",
     "jquery": "^2.2.1",
     "live-server": "^1.2.0",
     "react": "^0.14.7",

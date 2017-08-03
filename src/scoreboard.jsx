@@ -9,13 +9,13 @@ let Scoreboard = (props) => {
 
   return (
     <div>
-      <span
+      <h1
         style={{
           textDecoration: 'underline',
           padding: '20px 20px 20px 40px'
         }}
-      >Winner Record:</span>
-      <button>Add Player!</button>
+      >Winner Record:</h1><h2>{props.turn}&#39;s Turn</h2>
+    <button onClick={props.newGame}>New Game!</button>
       <ul style={{listStyleType: 'none'}}>
         {winners}
       </ul>

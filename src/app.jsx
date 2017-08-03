@@ -3,8 +3,8 @@ class App extends React.Component {
 
   constructor(){
     super();
-    this.player1Name = prompt('what is your name, player 1?');
-    this.player2Name = prompt('what is your name, player 2?');
+    this.player1Name = prompt('what is your name, player X?');
+    this.player2Name = prompt('what is your name, player O?');
     this.player1 =  "X";
     this.player2 = "O";
     this.state = {
@@ -18,6 +18,7 @@ class App extends React.Component {
   }
 
   clickHandler(e){
+    if(this.state.winner){return}
     if(!e.target.innerHTML) {
       var newGameState = this.state.gameState.slice(0);
       newGameState[e.target.id[0]][e.target.id[1]] = this.state.currentTurnPlayer;
@@ -34,6 +35,13 @@ class App extends React.Component {
     if(this.state.winner){
       alert(prevState.currentPlayer + ' won!');
     }
+  }
+
+  newGameCondition(e) {
+    this.setState({
+      winner: false,
+      gameState: [['','',''],['','',''],['','','']]
+    });
   }
 
   hasWinner(id, symbol){
@@ -77,7 +85,7 @@ class App extends React.Component {
           <Board clickHandler={this.clickHandler} gameState={this.state.gameState}/>
         </div>
         <div className="score col-xs-12  col-sm-4 col-md-6">
-          <Scoreboard winners={this.state.players}/>
+          <Scoreboard turn={this.state.currentTurnPlayer} winners={this.state.players} newGame={this.newGameCondition.bind(this)}/>
         </div>
       </div>
     );
